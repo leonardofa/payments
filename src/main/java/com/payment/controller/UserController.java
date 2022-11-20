@@ -8,6 +8,7 @@ import com.payment.service.UserRetriveService;
 import com.payment.service.UserUpdateService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class UserController {
 
   @PostMapping
   public ResponseEntity<ResponseModel> create(@RequestBody @Valid UserInput input) {
-    return ResponseEntity.ok(userCreateService.execute(input));
+    return ResponseEntity.status(HttpStatus.CREATED).body(userCreateService.execute(input));
   }
 
   @PutMapping("{id}")
@@ -43,7 +44,7 @@ public class UserController {
 
   @GetMapping
   public ResponseEntity<ResponseModel> all() {
-    return ResponseEntity.ok(userRetriveService.execute());
+    return ResponseEntity.ok().body(userRetriveService.execute());
   }
 
 }

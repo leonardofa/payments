@@ -17,7 +17,7 @@ process ->
 ## Donne and increase:
 1. Fork project on GitHub
 2. Using Lombok
-3. Using Openapi (swagger)
+3. Using Openapi (default: http://localhost:8080/swagger-ui/index.html)
 4. Using Spring Validation
 5. Using ModelMapper
 6. Active Jackson deserialization exception to use *ApiExceptionHandler*
@@ -29,5 +29,12 @@ process ->
 12. Models Create for input and output
 13. Services created for easy unit test and SOLID concepts (not all 😁)
 14. Messages files for Validations keys
-15. Tests... (building)
+15. Add maven-failsafe-plugin. not run IT on normal build (test class ends withs IT)
+16. For run IT tests run *mvn verify* command or runs with IDE support
+17. Add rest-assured dependency for api test
+
+
+### Didn't make
+1. Full Crud for Accounts, Products and Payments (Just User made)
+2. Test all services (I was foccused on payment flux)
 

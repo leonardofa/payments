@@ -11,7 +11,11 @@ import org.springframework.stereotype.Service;
 public class PaymentHashGenerateService {
 
   public String execute(final Payment payment) {
-    return Base64.getEncoder().encodeToString(String.valueOf(payment.getId()).getBytes());
+    return execute(payment.getId());
+  }
+
+  public String execute(final Integer id) {
+    return Base64.getEncoder().encodeToString(String.valueOf(id).getBytes());
   }
 
 }

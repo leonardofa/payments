@@ -7,6 +7,7 @@ import com.payment.service.PaymentCreateService;
 import com.payment.service.PaymentRetriveService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class PaymentController {
 
   @PostMapping
   public ResponseEntity<ResponseModel> create(@RequestBody @Valid final PaymentInput input) {
-    return ResponseEntity.ok(paymentCreateService.execute(input));
+    return ResponseEntity.status(HttpStatus.CREATED).body(paymentCreateService.execute(input));
   }
 
   @PutMapping("/confirm/{hash}")

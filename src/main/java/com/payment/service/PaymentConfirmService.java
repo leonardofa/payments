@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ public class PaymentConfirmService {
   private final PaymentRepository paymentRepository;
   private final ModelMapper mapper;
 
+  @Transactional
   public ResponseModel hash(final String hash) {
     val payment = paymentRetriveService.hash(hash);
     if (payment.getConfirmed()) {
