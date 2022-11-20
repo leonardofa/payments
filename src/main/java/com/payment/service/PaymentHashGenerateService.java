@@ -3,7 +3,6 @@ package com.payment.service;
 import com.payment.entity.Payment;
 import java.util.Base64;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 import org.springframework.stereotype.Service;
 
 @Service

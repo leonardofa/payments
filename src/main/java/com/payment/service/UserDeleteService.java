@@ -1,8 +1,8 @@
 package com.payment.service;
 
-import com.payment.model.ResponseModel;
 import com.payment.entity.User;
 import com.payment.exception.UsingEntityException;
+import com.payment.model.ResponseModel;
 import com.payment.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;

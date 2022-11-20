@@ -8,7 +8,6 @@ import io.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

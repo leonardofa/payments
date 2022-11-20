@@ -1,9 +1,9 @@
 package com.payment.service;
 
+import com.payment.entity.User;
 import com.payment.model.ResponseModel;
 import com.payment.model.UserInput;
 import com.payment.model.UserOutput;
-import com.payment.entity.User;
 import com.payment.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.val;

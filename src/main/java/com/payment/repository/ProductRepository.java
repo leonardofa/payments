@@ -2,7 +2,6 @@ package com.payment.repository;
 
 import com.payment.entity.Account;
 import com.payment.entity.Product;
-import com.payment.entity.User;
 import java.util.Objects;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
