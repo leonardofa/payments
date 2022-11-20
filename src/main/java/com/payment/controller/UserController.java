@@ -1,38 +1,49 @@
 package com.payment.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.payment.entity.User;
-import com.payment.repository.UserRepository;
+import com.payment.model.ResponseModel;
+import com.payment.model.UserInput;
+import com.payment.service.UserCreateService;
+import com.payment.service.UserDeleteService;
+import com.payment.service.UserRetriveService;
+import com.payment.service.UserUpdateService;
+import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/users")
+@RequiredArgsConstructor
 public class UserController {
-	
-	@Autowired
-	private UserRepository userRepository;
-	
-	@GetMapping
-	public List<User> getUsers() {
-		return (List<User>) userRepository.findAll();
-	}
-	
-	@GetMapping("/{userId}")
-	public User getUserById(@PathVariable Integer userId) {
-		return userRepository.findById(userId).orElseThrow(()-> new RuntimeException());
-	}
-	
-	@PostMapping
-	public User createUser(@RequestBody User user) {
-		return userRepository.save(user);
-	}
+
+  private final UserCreateService userCreateService;
+  private final UserUpdateService userUpdateService;
+  private final UserDeleteService userDeleteService;
+  private final UserRetriveService userRetriveService;
+
+  @PostMapping
+  public ResponseEntity<ResponseModel> create(@RequestBody @Valid UserInput input) {
+    return ResponseEntity.ok(userCreateService.execute(input));
+  }
+
+  @PutMapping("{id}")
+  public ResponseEntity<ResponseModel> update(@PathVariable Integer id, @RequestBody @Valid UserInput input) {
+    return ResponseEntity.ok(userUpdateService.execute(id, input));
+  }
+
+  @DeleteMapping("{id}")
+  public ResponseEntity<ResponseModel> delete(@PathVariable Integer id) {
+    return ResponseEntity.ok(userDeleteService.execute(id));
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<ResponseModel> one(@PathVariable Integer id) {
+    return ResponseEntity.ok(userRetriveService.execute(id));
+  }
+
+  @GetMapping
+  public ResponseEntity<ResponseModel> all() {
+    return ResponseEntity.ok(userRetriveService.execute());
+  }
 
 }
